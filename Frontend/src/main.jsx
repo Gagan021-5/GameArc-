@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Cart from "./pages/Cart";
 import Game from "./aboutgames/Game.jsx";
-import Gameup from "./aboutgames/gameup.jsx";
+import Gameup from "./aboutgames/Gameup.jsx";   
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
 import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
