@@ -29,7 +29,7 @@ const Game = () => {
     setTimeout(() => {
       const getgamebyid = async () => {
         const gamebyid = await axios.get(
-          `http://localhost:4000/api/game/${id}`
+          `https://gamearc-espn.onrender.com/api/game/${id}`
         );
         getgame(gamebyid.data);
       };
