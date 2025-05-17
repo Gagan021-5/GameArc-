@@ -29,7 +29,7 @@ const Account = () => {
     try {
       reset();
       const response = await axios.post(
-        "http://localhost:4000/api/users/register",
+        "https://gamearc-espn.onrender.com/api/users/register",
         data
       ); //registering user
       const { token, user } = response.data;
