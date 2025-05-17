@@ -17,7 +17,7 @@ const TopSell = () => {
 
   useEffect(() => {
     const fetched = async () => {
-      let thegame = await axios.get("http://localhost:4000/api/game");
+      let thegame = await axios.get("https://gamearc-espn.onrender.com/api/game");
       let sell = thegame.data.filter((e) => top.includes(e.id));
       setdisplay(sell);
     };
