@@ -13,7 +13,7 @@ import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
 import Layout from "./pages/Layout.jsx";
 import Login from "./pages/Login.jsx";
 import Privacy from "./pages/Privacy.jsx";
-import Terms from "./pages/Terms.jsx";
+import Terms from "./pages/Terms.jsx"
 import { createRoutesFromElements } from "react-router-dom";
 import Contact from "./pages/Contact.jsx";
 import Explore from "./pages/Explore.jsx";
