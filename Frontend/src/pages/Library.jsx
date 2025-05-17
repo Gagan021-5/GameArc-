@@ -111,7 +111,7 @@ const Library = () => {
 
     {loading ? (
    <p className="text-white mt-5 text-center text-lg flex items-center justify-center">
-  <LuLoaderPinwheel className="w-7 h-7 fill-white animate-spin mr-2" />
+  <LuLoaderPinwheel className="w-7 h-7  animate-spin mr-2" />
   Loading your games...
 </p>
     ) : games.length === 0 ? (
