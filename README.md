@@ -1,12 +1,63 @@
-# React + Vite
+# 🎮 GameArc – Gaming E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **GameArc**, a full-stack gaming e-commerce web application where users can browse, search, and purchase their favorite games with secure authentication and real-time Stripe payments.
 
-Currently, two official plugins are available:
+🚀 Built with modern technologies like **React**, **Tailwind CSS**, **Node.js**, **MongoDB**, and **Firebase**, GameArc offers a clean, responsive, and seamless user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🛒 **Storefront**
+  - Browse 60+ games with images, prices, descriptions, and embedded trailers
+  - Filter by genre, price range, and rating
+  - Search bar with real-time search suggestions
+
+- 👤 **User Authentication**
+  - Email/password login & signup
+  - Social logins via **Google**, **GitHub**, and **Facebook** using Firebase
+  - JWT-protected routes for user security
+
+- 🧺 **Cart & Checkout**
+  - Add/remove games from cart
+  - Integrated **Stripe Checkout** for secure payments
+  - Post-checkout success/cancel screens
+
+- ⚙️ **Admin/Backend**
+  - Express.js routes for users, games, and orders
+  - MongoDB Atlas for scalable data storage
+  - Clean modular codebase using ES Modules
+
+---
+
+## 🧑‍💻 Tech Stack
+
+### 🔷 Frontend
+- React (Vite)
+- Tailwind CSS
+- React Router
+- Firebase Authentication
+
+### 🔶 Backend
+- Node.js + Express.js
+- MongoDB + Mongoose
+- JWT Authentication
+- Stripe API
+
+---
+
+## 📦 Installation & Setup
+
+### 🔧 Prerequisites
+
+- Node.js & npm
+- MongoDB Atlas account
+- Firebase project
+- Stripe account
+
+### 🖥️ Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
