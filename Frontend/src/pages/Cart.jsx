@@ -51,7 +51,7 @@ const Cart = () => {
   async function makePayment(cartItems) {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/game/cart/checkout",
+        "https://gamearc-espn.onrender.com/api/game/cart/checkout",
         { cartitems: cartItems },
         {
           headers: {
