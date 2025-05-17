@@ -15,7 +15,7 @@ const Library = () => {
     if (cart.length === 0) return;
 
     try {
-      const res = await axios.get("http://localhost:4000/api/game/my/collection", {
+      const res = await axios.get("https://gamearc-espn.onrender.com/api/game/my/collection", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
