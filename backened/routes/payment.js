@@ -28,8 +28,8 @@ paymentroute.post("/checkout", verifyuser, async (req, res) => {
       payment_method_types: ["card"],
       mode: "payment",
       line_items: list_items,
-      success_url: "http://localhost:5173/success",
-      cancel_url: "http://localhost:5173/cart",
+      success_url: "https://gamearc-frontend2.onrender.com/success",
+      cancel_url: "https://gamearc-frontend2.onrender.com/cart",
     });
 
     res.json({ url: session.url });
