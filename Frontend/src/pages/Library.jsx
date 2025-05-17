@@ -110,7 +110,7 @@ const Library = () => {
     </h1>
 
     {loading ? (
-   <p className="text-white mt-5 text-center text-lg flex items-center justify-center">
+   <p className="text-white mt-5 text-center text-lg flex items-center animate-pulse justify-center">
   <LuLoaderPinwheel className="w-7 h-7  animate-spin mr-2" />
   Loading your games...
 </p>
