@@ -25,7 +25,7 @@ const Navbar = () => {
       if (!token) return;
 
       try {
-        const res = await axios.get("http://localhost:4000/api/users/me", {
+        const res = await axios.get("https://gamearc-espn.onrender.com/api/users/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
