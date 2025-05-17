@@ -16,7 +16,7 @@ const Latest = () => {
 
   useEffect(() => {
     const latestfetch = async () => {
-      const getgame = await axios.get(`http://localhost:4000/api/game/`);
+      const getgame = await axios.get(`https://gamearc-espn.onrender.com/api/game/`);
 
       let filtered = getgame.data.filter((e) => selected.includes(e.id));
       setdisplay(filtered);
