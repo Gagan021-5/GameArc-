@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthUser } from "../context/Authcontext";
+import { LuLoaderPinwheel } from "react-icons/lu";
 
 
 const Library = () => {
@@ -109,7 +110,10 @@ const Library = () => {
     </h1>
 
     {loading ? (
-      <p className="text-white mt-5 text-center text-lg">Loading your games...</p>
+   <p className="text-white mt-5 text-center text-lg flex items-center justify-center">
+  <LuLoaderPinwheel className="w-7 h-7 fill-white animate-spin mr-2" />
+  Loading your games...
+</p>
     ) : games.length === 0 ? (
       <p className="text-white mt-5 text-center text-lg">No games purchased yet.</p>
     ) : (
