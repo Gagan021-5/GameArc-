@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useParams } from "react-router-dom";
 import { upcoming } from "../components/Upcome";
 import { LuLoaderPinwheel } from "react-icons/lu";
