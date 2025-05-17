@@ -66,7 +66,7 @@ const Store = () => {
   useEffect(() => {
     setLoading(true);
     const allofthem = async () => {
-      let res = await axios.get("http://localhost:4000/api/game");
+      let res = await axios.get("https://gamearc-espn.onrender.com/api/game");
       setfirst(res.data);
       setallgames(res.data.slice(0, next));
       setLoading(false);
