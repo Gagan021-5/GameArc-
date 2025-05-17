@@ -28,10 +28,11 @@ export const AuthProvider = ({ children }) => {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((res) => setUser(res.data))
-        .catch(() => {
+        .catch(async () => {
           setUser(null);
           setToken(null);
           localStorage.removeItem("token");
+          await signOut(auth);
         });
     }
   }, []);
@@ -40,28 +41,20 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         console.log("Firebase user signed in:", firebaseUser.email);
-       
-      } else {
-        console.log("Firebase user signed out");
-      }
+      } 
     });
     return unsubscribe;
   }, []);
-
-
-
-
-
-
-
-
 
   const signinGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, google);
       const firebaseUser = result.user;
       const idToken = await firebaseUser.getIdToken();
-      const response = await axios.post("http://localhost:4000/api/users/oauthlogin", { idToken });
+      const response = await axios.post(
+        "http://localhost:4000/api/users/oauthlogin",
+        { idToken }
+      );
       const { token: backendToken, user: backendUser } = response.data;
 
       localStorage.setItem("token", backendToken);
@@ -78,7 +71,10 @@ export const AuthProvider = ({ children }) => {
       const result = await signInWithPopup(auth, github);
       const firebaseUser = result.user;
       const idToken = await firebaseUser.getIdToken();
-      const response = await axios.post("http://localhost:4000/api/users/oauthlogin", { idToken });
+      const response = await axios.post(
+        "http://localhost:4000/api/users/oauthlogin",
+        { idToken }
+      );
       const { token: backendToken, user: backendUser } = response.data;
 
       localStorage.setItem("token", backendToken);

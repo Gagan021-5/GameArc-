@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { upcoming } from "../components/Upcome";
+import { upcoming } from "../components/Upcome.js";
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { Remind } from "../context/Remind";
 import { useContext,useState } from "react";

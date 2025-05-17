@@ -7,20 +7,6 @@ import TopSell from "../components/TopSell";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const Home = () => {
   const arrofimg = [
     {
@@ -57,17 +43,17 @@ const Home = () => {
   return (
     <>
       <div className="w-full min-h-[90%] flex justify-center items-start bg-gray-900 p-2  relative ">
-       
         <div className="w-full sm:w-[90%] md:w-[95%] md:h-auto lg:h-[70vh] rounded-3xl max-sm:rounded-lg  relative overflow-hidden shadow-2xl cursor-pointer transition duration-200 hover:scale-[1.01] ease-in-out">
           {arrofimg.length > 0 && (
             <Link to={`/game/gamedetail/${arrofimg[index].id}`}>
-            <img
-            loading="lazy"
-              key={arrofimg[index].id}
-              src={arrofimg[index].url}
-              alt="Game"
-              className="w-full h-auto object-cover rounded-2xl max-sm:rounded-lg transition-opacity duration-700 ease-in-out opacity-100"
-            /></Link>
+              <img
+                loading="lazy"
+                key={arrofimg[index].id}
+                src={arrofimg[index].url}
+                alt="Game"
+                className="w-full h-auto object-cover rounded-2xl max-sm:rounded-lg transition-opacity duration-700 ease-in-out opacity-100"
+              />
+            </Link>
           )}
         </div>
       </div>

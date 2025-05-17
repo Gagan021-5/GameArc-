@@ -7,22 +7,31 @@ const Library = () => {
   const { user } = useContext(AuthUser);
   const navigate = useNavigate();
   const [games, setGames] = useState([]);
-
+  const [savepurchased, setPurchasesSaved] = useState(false); 
   const token = localStorage.getItem("token");
 
   const savePurchasesIfAny = async () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
     if (cart.length === 0) return;
 
-    for (let item of cart) {
-      try {
+    try {
+      const res = await axios.get("http://localhost:4000/api/game/my/collection", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const purchasedIds = new Set(res.data.purchased.map((p) => p.gameId));
+
+      for (let item of cart) {
+        if (purchasedIds.has(item._id)) continue;
+
         await axios.post(
           "http://localhost:4000/api/game/my/collection/purchase",
           {
             gameId: item._id,
             gameName: item.name,
-            gameimg: item.image,
+            gameimg: item.url,
             genre: item.genre,
           },
           {
@@ -31,12 +40,13 @@ const Library = () => {
             },
           }
         );
-      } catch (err) {
-        console.error("Failed ",err);
       }
-    }
 
-    localStorage.removeItem("cart"); 
+      localStorage.removeItem("cart");
+      setPurchasesSaved(true); 
+    } catch (err) {
+      console.error("Purchase save failed:", err);
+    }
   };
 
   const fetchLibrary = async () => {
@@ -53,15 +63,15 @@ const Library = () => {
   };
 
   useEffect(() => {
-  if (!user) return;
+    if (!user || savepurchased) return;
 
-  const handleLibrary = async () => {
-    await savePurchasesIfAny(); 
-    await fetchLibrary();     
-  };
+    const handleLibrary = async () => {
+      await savePurchasesIfAny();
+      await fetchLibrary();
+    };
 
-  handleLibrary();
-}, [user]);
+    handleLibrary();
+  }, [user, savepurchased]);
 
   if (!user) {
     return (
@@ -81,15 +91,21 @@ const Library = () => {
 
   return (
     <div className="min-h-screen w-full p-4">
-      <h1 className="text-3xl font-bold text-white mx-5 max-sm:mx-0 ">Your Collections</h1>
+      <h1 className="text-3xl font-bold text-white mx-5 max-sm:mx-0 ">
+        Your Collections
+      </h1>
       <div className="p-3 w-full flex gap-10 max-sm:gap-5 flex-wrap max-sm:justify-center lg:p-5 md:p-4 ">
         {games.length === 0 ? (
-         <div className="w-full justify-center"> <p className="text-white mt-5 text-center text-lg ">No games purchased yet.</p></div>
+          <div className="w-full justify-center">
+            <p className="text-white mt-5 text-center text-lg ">
+              No games purchased yet.
+            </p>
+          </div>
         ) : (
           games.map((game, index) => (
             <div
               key={index}
-             className="h-auto w-[95%] max-sm:w-42 sm:w-60 md:w-72 lg:w-60 rounded-xl flex flex-col bg-gray-800  opacity-100 hover:scale-101 transition duration-150 shadow-xl cursor-pointer"
+              className="h-auto w-[95%] max-sm:w-42 sm:w-60 md:w-72 lg:w-60 rounded-xl flex flex-col bg-gray-800  opacity-100 hover:scale-101 transition duration-150 shadow-xl cursor-pointer"
             >
               <div className="h-[80%] w-full">
                 <img
