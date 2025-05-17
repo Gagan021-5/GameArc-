@@ -20,7 +20,7 @@ import Explore from "./pages/Explore.jsx";
 import SearchProvider from "./context/Searchinput.jsx";
 import FilterProvider from "./context/Filtercontext.jsx";
 import Account from "./pages/Account.jsx";
-import Gameup from "./aboutgames/Gameup.jsx";
+import Gameup from "./aboutgames/gameup.jsx";
 import  RemindProvider from "./context/Remind.jsx";
 import { ToastContainer, Bounce } from "react-toastify";
 import { AuthProvider } from "./context/Authcontext.jsx";
