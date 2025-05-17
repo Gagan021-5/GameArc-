@@ -1,16 +1,15 @@
-const express = require('express');
-const app = express()
-const port = 3000;
-const cors = require('cors');
-require('dotenv').config();
-app.use(cors());
+import { app } from "./utils/app.js"; 
+import connection from "./db/data.js";
 
 
-app.get('/', (req, res) => {
- res.send('nice')
-})
+try {
+  await connection();
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server is running at port ${process.env.PORT || 3000}`);
+  });
+} catch (e) {
+  console.log("Error during connection or server startup:", e);
+}
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-})
+
