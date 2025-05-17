@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Library from "./pages/Library";
 import Cart from "./pages/Cart";
-import Game from "./aboutgames/Game.jsx"
+import Game from "./aboutgames/Game.jsx";
 import { store } from "./redux/store.js";
 import { Provider } from "react-redux";
 import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
