@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
       const firebaseUser = result.user;
       const idToken = await firebaseUser.getIdToken();
       const response = await axios.post(
-        "http://localhost:4000/api/users/oauthlogin",
+        "https://gamearc-espn.onrender.com/api/users/oauthlogin",
         { idToken }
       );
       const { token: backendToken, user: backendUser } = response.data;
@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }) => {
       const firebaseUser = result.user;
       const idToken = await firebaseUser.getIdToken();
       const response = await axios.post(
-        "http://localhost:4000/api/users/oauthlogin",
+        "https://gamearc-espn.onrender.com/api/users/oauthlogin",
         { idToken }
       );
       const { token: backendToken, user: backendUser } = response.data;
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoginErr("");
       const response = await axios.post(
-        "http://localhost:4000/api/users/login",
+        "https://gamearc-espn.onrender.com/api/users/login",
         { email: data.email, password: data.password },
         { withCredentials: true }
       );
