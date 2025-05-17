@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     if (storedToken) {
       setToken(storedToken);
       axios
-        .get("http://localhost:4000/api/users/me", {
+        .get("https://gamearc-espn.onrender.com/api/users/me", {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((res) => setUser(res.data))
