@@ -12,7 +12,7 @@ app.use(express.static("public"));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://gamearc-frontend2.onrender.com",
     credentials: true,
   })
 );
