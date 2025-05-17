@@ -12,7 +12,7 @@ const Explore = () => {
   useEffect(() => {
     setTimeout(() => {
       const fetchgames = async () => {
-        let res = await axios.get("http://localhost:4000/api/game/explore");
+        let res = await axios.get("https://gamearc-espn.onrender.com/api/game/explore");
         setgame(res.data);
         setloading(false);
       };
