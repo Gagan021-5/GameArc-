@@ -18,7 +18,7 @@ const Featured = () => {
 
   useEffect(() => {
     const begame = async () => {
-      let card = await axios.get("http://localhost:4000/api/game");
+      let card = await axios.get("https://gamearc-espn.onrender.com/api/game");
 
       let playground = card.data.filter((game) => select.includes(game.id));
       setdisplay(playground);
