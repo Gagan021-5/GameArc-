@@ -6,7 +6,7 @@ import { User } from "../models/Userschema.js";
 export const verifyuser = handler(async (req, res, next) => {
   try{
 
-    const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", ""); //debugg takes 1hrr
+    const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", ""); //debugg takes 1hr
 
     console.log("Token received:", token);
 

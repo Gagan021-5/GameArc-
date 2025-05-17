@@ -9,7 +9,7 @@ export default function FilterProvider({ children }) {
 
   return (
     <Filtercontext.Provider value={{ price, setprice, category, setcategory, rating, setrating }}>
-      {children}
+     {children}
     </Filtercontext.Provider>
   );
 }

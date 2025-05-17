@@ -2,23 +2,21 @@ import { useParams } from "react-router-dom";
 import { upcoming } from "../components/Upcome.js";
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { Remind } from "../context/Remind";
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import { AuthUser } from "../context/Authcontext";
 
-const Gameup = () => {
+const Gameup = () => {     //youtube autoplay and mic off default
   const getAutoplayYoutubeUrl = (url) => {
     if (!url) return "";
     return url.includes("?")
       ? `${url}&autoplay=1&mute=1`
       : `${url}?autoplay=1&mute=1`;
   };
-   
 
-  const {token} = useContext(AuthUser); 
+  const { token } = useContext(AuthUser);
   const { id } = useParams();
-  const {notify} = useContext(Remind);
+  const { notify } = useContext(Remind);
 
-  
   const [color, setcolor] = useState(() => {
     return localStorage.getItem("Remind") === "true";
   });
@@ -31,7 +29,6 @@ const Gameup = () => {
     }
   };
 
-  
   const game = upcoming.find((g) => g.id == Number(id));
   console.log(game);
 
@@ -40,7 +37,6 @@ const Gameup = () => {
       <div className="min-h-screen w-full bg-gray-900 flex justify-center">
         {game ? (
           <div className="min-h-[70%] h-auto w-full lg:grid lg:grid-cols-2 sm:flex sm:flex-col">
- 
             <div className="w-full h-auto flex justify-center items-center p-5 flex-col rounded-xl">
               <div className="w-full h-full flex flex-col space-y-10 p-4">
                 <h1 className="text-white text-4xl font-extrabold">
@@ -53,7 +49,6 @@ const Gameup = () => {
                   </span>
                 </div>
 
-             
                 <div className="h-90 w-auto">
                   <iframe
                     className="rounded-xl w-[94%] max-sm:w-full h-full shadow-xl"
@@ -66,7 +61,6 @@ const Gameup = () => {
                   ></iframe>
                 </div>
 
-              
                 <div className="w-full space-y-4">
                   <h1 className="text-white text-3xl font-bold">
                     About the Game
@@ -78,7 +72,6 @@ const Gameup = () => {
               </div>
             </div>
 
-        
             <div className="w-full">
               <div className="w-full h-[900px] flex justify-center items-center p-5 flex-col">
                 <div className="w-full h-full flex flex-col space-y-10">
@@ -94,9 +87,13 @@ const Gameup = () => {
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 w-full">
                       <button
                         onClick={iftrue}
-                          className={color ? "text-white bg-blue-700  cursor-pointer rounded-lg px-6 py-3 font-medium transition duration-200": "text-white  bg-gray-700 hover:bg-blue-700 cursor-pointer rounded-lg px-6 py-3 font-medium transition duration-200 "}
+                        className={
+                          color
+                            ? "text-white bg-blue-700  cursor-pointer rounded-lg px-6 py-3 font-medium transition duration-200"
+                            : "text-white  bg-gray-700 hover:bg-blue-700 cursor-pointer rounded-lg px-6 py-3 font-medium transition duration-200 "
+                        }
                       >
-                        {color? "Reminder Set" :" Remind me"}
+                        {color ? "Reminder Set" : " Remind me"}
                       </button>
                     </div>
 

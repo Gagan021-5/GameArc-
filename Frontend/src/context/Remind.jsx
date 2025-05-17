@@ -7,7 +7,6 @@ export const Remind = createContext();
 const  RemindProvider = ({children})=>{
  const notify=()=>{
     toast("Reminder Set ✅")
-
  };
 
  return (

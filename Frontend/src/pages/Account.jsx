@@ -31,7 +31,7 @@ const Account = () => {
       const response = await axios.post(
         "https://gamearc-espn.onrender.com/api/users/register",
         data
-      ); //registering user
+      ); 
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       setUser(user);

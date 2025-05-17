@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { auth } from "../../firebase";
+
 import {
   onAuthStateChanged,
   signInWithPopup,
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         console.log("Firebase user signed in:", firebaseUser.email);
-      } 
+      }
     });
     return unsubscribe;
   }, []);

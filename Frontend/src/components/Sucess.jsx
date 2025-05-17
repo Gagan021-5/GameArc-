@@ -1,13 +1,8 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
 const Success = () => {
   const navigate = useNavigate();
-
-  
-
-
   return (
     <div className="flex justify-center items-center h-screen text-white flex-col">
       <h2 className="text-3xl font-semibold mb-4 text-emerald-400">Payment Successful!</h2>

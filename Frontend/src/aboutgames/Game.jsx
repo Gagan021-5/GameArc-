@@ -234,7 +234,7 @@ const Game = () => {
         <div className="h-[80vh] flex w-full justify-center items-center">
           <p className="text-white text-lg animate-pulse flex items-center gap-2">
             <LuLoaderPinwheel className="size-7" />
-            Loading GameDetail...
+            Loading Gamedetail...
           </p>
         </div>
       )}

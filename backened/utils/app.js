@@ -12,7 +12,9 @@ app.use(express.static("public"));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://gamearc-frontend2.onrender.com",
+    origin: ["https://gamearc-frontend2.onrender.com",
+      "https://gamearc-espn.onrender.com"
+    ],
     credentials: true,
   })
 );

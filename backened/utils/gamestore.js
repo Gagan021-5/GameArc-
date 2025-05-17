@@ -8,7 +8,7 @@ const store = async()=>{
        if(count==0){
         await Gamedetails.insertMany(allgames);
         console.log("The game is inserted 🦖");
-        
+    
        }
     }
     catch(error){
