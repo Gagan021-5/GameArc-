@@ -27,7 +27,7 @@ const Library = () => {
         if (purchasedIds.has(item._id)) continue;
 
         await axios.post(
-          "http://localhost:4000/api/game/my/collection/purchase",
+          "https://gamearc-espn.onrender.com/api/game/my/collection/purchase",
           {
             gameId: item._id,
             gameName: item.name,
@@ -51,7 +51,7 @@ const Library = () => {
 
   const fetchLibrary = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/game/my/collection", {
+      const res = await axios.get("https://gamearc-espn.onrender.com/api/game/my/collection", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
