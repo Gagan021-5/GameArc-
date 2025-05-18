@@ -16,7 +16,7 @@ const Latest = () => {
 
   useEffect(() => {
     const latestfetch = async () => {
-      const response = await axios.get("https://gamearc-espn.onrender.com/api/game/");
+      const response = await axios.get(`https://gamearc-espn.onrender.com/api/game/`);
       const filtered = response.data.filter((game) => selected.includes(game.id));
       setDisplay(filtered);
     };
@@ -36,14 +36,15 @@ const Latest = () => {
       <h1 className="text-white text-3xl font-bold p-5 mx-2 max-sm:m-0">
         Latest Release
       </h1>
-      <div className="text-white w-[95%] mx-auto flex flex-wrap gap-4 justify-center md:justify-start">
+
+      <div className="text-white w-[95%] mx-auto flex flex-wrap gap-6 justify-center md:justify-start">
         {display.map((val) => (
           <Link
             to={`/game/gamedetail/${val.id}`}
             key={val.id}
-            className="bg-gray-800 rounded-2xl transition-transform duration-300 hover:scale-105 cursor-pointer flex flex-col basis-[48%] sm:basis-60 min-w-[160px]"
+            className="bg-gray-800 w-52 sm:w-60 rounded-2xl transition-transform duration-300 hover:scale-105 cursor-pointer flex flex-col"
           >
-            <div className="h-40 sm:h-48 rounded-t-2xl overflow-hidden">
+            <div className="h-44 sm:h-48 rounded-t-2xl overflow-hidden">
               <img
                 src={val.url}
                 alt={val.name}
