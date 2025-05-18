@@ -1,48 +1,45 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addtocart } from "../counter/counterSlice";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { AuthUser } from "../context/Authcontext";
+
 const Latest = () => {
   const { user } = useContext(AuthUser);
-  const redirect = useNavigate();
-  const getitem = useSelector((e) => e.cart.cartitem);
+  const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart.cartitem);
   const dispatch = useDispatch();
+
   const [selected] = useState([50, 4, 51, 52, 53, 54]);
-  const [display, setdisplay] = useState([]);
+  const [display, setDisplay] = useState([]);
 
   useEffect(() => {
     const latestfetch = async () => {
-      const getgame = await axios.get(`https://gamearc-espn.onrender.com/api/game/`);
-
-      let filtered = getgame.data.filter((e) => selected.includes(e.id));
-      setdisplay(filtered);
+      const response = await axios.get(https://gamearc-espn.onrender.com/api/game/);
+      const filtered = response.data.filter((game) => selected.includes(game.id));
+      setDisplay(filtered);
     };
 
     latestfetch();
-  }, []);
+  }, [selected]);
 
-  const already = (game) => {
-    let ifexist = getitem.some((g) => g.id === game.id);
-
-    if (!ifexist) {
+  const addToCartIfNotExists = (game) => {
+    const exists = cartItems.some((item) => item.id === game.id);
+    if (!exists) {
       dispatch(addtocart(game));
     }
   };
 
   return (
-    <>
-      <div className="w-full h-auto bg-gray-900 pb-6">
-        <h1 className="text-white text-3xl font-bold p-5 mx-2 max-sm:m-0">
-          Latest Release
-        </h1>
+    <div className="w-full bg-gray-900 pb-6">
+      <h1 className="text-white text-3xl font-bold p-5 mx-2 max-sm:m-0">
+        Latest Release
+      </h1>
 <div className="text-white w-[95%] mx-auto flex flex-wrap gap-4 justify-center md:justify-start">
   {display.map((val) => (
     <Link
-      to={`/game/gamedetail/${val.id}`}
+      to={/game/gamedetail/${val.id}}
       key={val.id}
       className="bg-gray-800 rounded-2xl transition-transform duration-300 hover:scale-105 cursor-pointer flex flex-col
                  basis-[48%] sm:basis-60 min-w-[160px]"
@@ -69,11 +66,11 @@ const Latest = () => {
               }
               addToCartIfNotExists(val);
             }}
-            className={`text-white font-semibold text-sm px-3 py-1 rounded ${
+            className={text-white font-semibold text-sm px-3 py-1 rounded ${
               cartItems.some((item) => item.id === val.id)
                 ? "bg-gray-900 cursor-default"
                 : "bg-gray-600 hover:bg-gray-900 cursor-pointer"
-            }`}
+            }}
             disabled={cartItems.some((item) => item.id === val.id)}
           >
             {cartItems.some((item) => item.id === val.id) ? "Added" : "Add to cart"}
@@ -83,9 +80,9 @@ const Latest = () => {
     </Link>
   ))}
 </div>
-      </div>
-    </>
+
+    </div>
   );
 };
 
-export default Latest;
+export default Latest; 
