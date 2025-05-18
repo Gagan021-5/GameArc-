@@ -39,13 +39,13 @@ const Latest = () => {
         <h1 className="text-white text-3xl font-bold p-5 mx-2 max-sm:m-0">
           Latest Release
         </h1>
-   <div className="text-white w-full px-2 flex flex-wrap gap-4 justify-center sm:justify-start">
+<div className="text-white w-[95%] mx-auto flex flex-wrap gap-4 justify-center md:justify-start">
   {display.map((val) => (
     <Link
       to={`/game/gamedetail/${val.id}`}
       key={val.id}
       className="bg-gray-800 rounded-2xl transition-transform duration-300 hover:scale-105 cursor-pointer flex flex-col
-                 w-[48%] sm:w-[45%] md:w-[30%] lg:w-[22%] xl:w-[18%] min-w-[150px] max-w-[300px]"
+                 basis-[48%] sm:basis-60 min-w-[160px]"
     >
       <div className="h-40 sm:h-48 rounded-t-2xl overflow-hidden">
         <img
@@ -60,24 +60,24 @@ const Latest = () => {
         </h1>
         <div className="mt-auto flex justify-between items-center">
           <span className="text-white font-semibold text-lg">${val.price}</span>
-     <button
-  onClick={(e) => {
-    e.preventDefault();
-    if (!user) {
-      redirect("/login");
-      return;
-    }
-    already(val); 
-  }}
-  className={`text-white font-semibold text-sm px-3 py-1 rounded ${
-    getitem.some((item) => item.id === val.id)
-      ? "bg-gray-900 cursor-default"
-      : "bg-gray-600 hover:bg-gray-900 cursor-pointer"
-  }`}
-  disabled={getitem.some((item) => item.id === val.id)}
->
-  {getitem.some((item) => item.id === val.id) ? "Added" : "Add to cart"}
-</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              if (!user) {
+                navigate("/login");
+                return;
+              }
+              addToCartIfNotExists(val);
+            }}
+            className={`text-white font-semibold text-sm px-3 py-1 rounded ${
+              cartItems.some((item) => item.id === val.id)
+                ? "bg-gray-900 cursor-default"
+                : "bg-gray-600 hover:bg-gray-900 cursor-pointer"
+            }`}
+            disabled={cartItems.some((item) => item.id === val.id)}
+          >
+            {cartItems.some((item) => item.id === val.id) ? "Added" : "Add to cart"}
+          </button>
         </div>
       </div>
     </Link>
