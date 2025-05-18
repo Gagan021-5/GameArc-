@@ -60,24 +60,24 @@ const Latest = () => {
         </h1>
         <div className="mt-auto flex justify-between items-center">
           <span className="text-white font-semibold text-lg">${val.price}</span>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              if (!user) {
-                navigate("/login");
-                return;
-              }
-              addToCartIfNotExists(val);
-            }}
-            className={`text-white font-semibold text-sm px-3 py-1 rounded ${
-              cartItems.some((item) => item.id === val.id)
-                ? "bg-gray-900 cursor-default"
-                : "bg-gray-600 hover:bg-gray-900 cursor-pointer"
-            }`}
-            disabled={cartItems.some((item) => item.id === val.id)}
-          >
-            {cartItems.some((item) => item.id === val.id) ? "Added" : "Add to cart"}
-          </button>
+     <button
+  onClick={(e) => {
+    e.preventDefault();
+    if (!user) {
+      redirect("/login");
+      return;
+    }
+    already(val); 
+  }}
+  className={`text-white font-semibold text-sm px-3 py-1 rounded ${
+    getitem.some((item) => item.id === val.id)
+      ? "bg-gray-900 cursor-default"
+      : "bg-gray-600 hover:bg-gray-900 cursor-pointer"
+  }`}
+  disabled={getitem.some((item) => item.id === val.id)}
+>
+  {getitem.some((item) => item.id === val.id) ? "Added" : "Add to cart"}
+</button>
         </div>
       </div>
     </Link>
