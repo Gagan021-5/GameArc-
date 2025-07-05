@@ -23,7 +23,7 @@
 <table>
   <tr>
     <td><img src="https://i.postimg.cc/SRT2z3cZ/Screenshot-2025-05-18-020313.png" alt="Game List View" width="100%" /></td>
-    <td><img src="https://i.postimg.cc/s2YMJvpG/Screenshot-2025-07-06-014346.png" alt="Game Deta il & CartView" width="100%" /></td>
+    <td><img src="https://i.postimg.cc/s2YMJvpG/Screenshot-2025-07-06-014346.png" alt="Game Detail & Cart View" width="100%" /></td>
   </tr>
 </table>
 
@@ -46,7 +46,7 @@
 
 ---
 
-### Architecture Flow Diagram
+### 🚀 Architecture Flow Diagram (Animated)
 
 ```mermaid
 graph TD
@@ -55,12 +55,17 @@ graph TD
   B -->|Processes payments| D[Stripe Checkout]
   B -->|Stores user data| E[MongoDB Atlas]
   A -->|Authenticates via| F[Firebase Authentication]
-  style A fill:#61dafb,stroke:#000,stroke-width:2px
-  style B fill:#339933,stroke:#000,stroke-width:2px
-  style C fill:#f44336,stroke:#000,stroke-width:2px
-  style D fill:#6772e5,stroke:#000,stroke-width:2px
-  style E fill:#47a248,stroke:#000,stroke-width:2px
-  style F fill:#ffca28,stroke:#000,stroke-width:2px
 
+  classDef frontend fill:#61dafb,stroke:#000,stroke-width:2px;
+  classDef backend fill:#339933,stroke:#000,stroke-width:2px;
+  classDef api fill:#f44336,stroke:#000,stroke-width:2px;
+  classDef payments fill:#6772e5,stroke:#000,stroke-width:2px;
+  classDef db fill:#47a248,stroke:#000,stroke-width:2px;
+  classDef auth fill:#ffca28,stroke:#000,stroke-width:2px;
 
-
+  class A frontend
+  class B backend
+  class C api
+  class D payments
+  class E db
+  class F auth
