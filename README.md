@@ -50,7 +50,7 @@
 |:---------------------:|:---------------------:|:---------------------:|
 | ⚛️ React (Vite)       | 🖥️ Node.js + Express  | 🌐 RAWG API           |
 | 🎨 Tailwind CSS       | 🗃️ MongoDB Atlas      | 💳 Stripe Payments    |
-| 🔐 Firebase Auth      | 🧾 JWT Protection     |    Firbase             |
+| 🔐 Firebase Auth      | 🧾 JWT Protection     |    Firebase             |
 
 
 ---
