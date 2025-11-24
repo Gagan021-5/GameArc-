@@ -19,6 +19,10 @@ app.use(
   })
 );
 
+app.get("/",(req,res)=>{
+  res.send("Heyy mate you are awesome !")
+})
+
 //Routing
 import gamerouter from "../routes/Game.js";
 import userrouter from "../routes/auth.js";
