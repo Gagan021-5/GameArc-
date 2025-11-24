@@ -22,7 +22,7 @@ const Latest = () => {
     };
 
     latestfetch();
-  }, [selected]);
+  }, []);
 
   const addToCartIfNotExists = (game) => {
     const exists = cartItems.some((item) => item.id === game.id);
@@ -33,57 +33,70 @@ const Latest = () => {
 
   return (
     <div className="w-full bg-gray-900 pb-6">
-      <h1 className="text-white text-3xl font-bold p-5 mx-2 max-sm:m-0">
+      <h1 className="text-white text-3xl font-bold p-5 mx-auto">
         Latest Release
       </h1>
-<div className="text-white w-[95%] mx-auto flex flex-wrap gap-4 justify-center md:justify-start">
-  {display.map((val) => (
-    <Link
-      to={`/game/gamedetail/${val.id}`}
-      key={val.id}
-      className="bg-gray-800 rounded-2xl transition-transform duration-300 hover:scale-105 cursor-pointer flex flex-col
-                 basis-[48%] sm:basis-60 min-w-[160px]"
-    >
-      <div className="h-40 sm:h-48 rounded-t-2xl overflow-hidden">
-        <img
-          src={val.url}
-          alt={val.name}
-          className="object-cover w-full h-full"
-        />
-      </div>
-      <div className="p-3 flex flex-col flex-grow">
-        <h1 className="font-bold text-white truncate mb-3" title={val.name}>
-          {val.name}
-        </h1>
-        <div className="mt-auto flex justify-between items-center">
-          <span className="text-white font-semibold text-lg">${val.price}</span>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              if (!user) {
-                navigate("/login");
-                return;
-              }
-              addToCartIfNotExists(val);
-            }}
-            className={`text-white font-semibold text-sm px-3 py-1 rounded ${
-              cartItems.some((item) => item.id === val.id)
-                ? "bg-gray-900 cursor-default"
-                : "bg-gray-600 hover:bg-gray-900 cursor-pointer"
-            }`}
-            disabled={cartItems.some((item) => item.id === val.id)}
-          >
-            {cartItems.some((item) => item.id === val.id) ? "Added" : "Add to cart"}
-          </button>
-        </div>
-      </div>
-    </Link>
-  ))}
-</div>
 
+      {/* SAME RESPONSIVE LAYOUT AS FEATURED */}
+      <div className="text-white lg:h-auto w-[95%] md:mx-6 max-sm:mx-4 
+                      flex gap-6 max-sm:flex-wrap md:flex-wrap 
+                      md:justify-center lg:justify-center xl:flex-nowrap">
+
+        {display.map((val) => (
+          <Link
+            to={`/game/gamedetail/${val.id}`}
+            key={val.id}
+            className="text-white pb-3 bg-gray-800 
+                       w-60 max-sm:w-45 md:w-52 lg:w-60 h-auto 
+                       rounded-t-2xl rounded-b-lg 
+                       transition duration-300 hover:scale-105 
+                       ease-out cursor-pointer"
+          >
+            {/* IMAGE HEIGHT MATCHES FEATURED */}
+            <div className="img w-full rounded-t-2xl 
+                            h-[70%] sm:h-[180px] md:h-[200px] lg:h-[70%]">
+              <img
+                src={val.url}
+                alt={val.name}
+                className="object-cover w-full h-full rounded-t-2xl"
+              />
+            </div>
+
+            <div className="p-2">
+              <h1 className="font-bold text-white truncate max-sm:text-md md:text-md">
+                {val.name}
+              </h1>
+
+              <div className="flex justify-between mt-5">
+                <h1 className="text-white text-md">${val.price}</h1>
+
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!user) {
+                      navigate("/login");
+                      return;
+                    }
+                    addToCartIfNotExists(val);
+                  }}
+                  className={`${
+                    cartItems.some((item) => item.id === val.id)
+                      ? "text-white font-semibold text-xs w-20 h-8 bg-gray-900 rounded-xs p-1 my-auto cursor-pointer lg:p-2"
+                      : "text-white font-semibold text-xs w-20 h-8 bg-gray-600 rounded-xs p-1 my-auto cursor-pointer lg:p-2 hover:bg-gray-900"
+                  }`}
+                  disabled={cartItems.some((item) => item.id === val.id)}
+                >
+                  {cartItems.some((item) => item.id === val.id)
+                    ? "Added"
+                    : "Add to cart"}
+                </button>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default Latest;
-
