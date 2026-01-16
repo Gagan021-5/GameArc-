@@ -71,6 +71,8 @@ graph TD
   class D stripe
   class E db
   class F auth
+```
+
 ---
 
 ## 🌐 Project Structure
